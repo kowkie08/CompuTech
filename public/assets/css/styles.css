@@ -1,0 +1,14 @@
+.navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show > .nav-link {
+  color:#ffffff;
+}
+
+.jumbotron {
+  padding:2rem 1rem;
+  margin-bottom:2rem;
+  background-color:#ffffff;
+}
+
+p.bold {
+  font-weight:bolder;
+}
+
