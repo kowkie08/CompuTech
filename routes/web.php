@@ -68,3 +68,11 @@ Route::get('/cart',[
     'uses' => 'ProductController@getCart',
     'as' => 'product.Cart'
 ]);
+
+//order
+Route::get('/orders', 'OrderController@getOrders');
+Route::get('/order/{id}', 'OrderDetailController@getOrderDetails');
+
+
+//users
+Route::get('/users', 'UserController@getUsers');

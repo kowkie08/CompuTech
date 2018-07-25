@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
 use App\User;
 use Session;
 
@@ -53,6 +54,54 @@ class UserController extends Controller
              Session::flash('message', 'Registration failed.');
             Session::flash('alert-class', 'alert-success');
                     return Redirect::to('/login');
+
+        }
+    }
+
+      public function addAdmin(Request $request){
+
+     $valid = Validator::make($request->all(), [
+                'email' => 'bail|required|max:191|unique:users',
+                'first_name' => 'bail|required|max:50',
+                'middle_name' => 'bail|required|max:50',
+                'last_name' => 'bail|required|max:50',
+                'street' => 'bail|required|max:50',
+                'town' => 'bail|required|max:50',
+                'first_name' => 'bail|required|max:50',
+                'mobileNumber' => 'bail|required|max:13',
+                'password' => 'bail|required|confirmed|max:64|min:8',
+            ]);
+
+       if($valid->fails()){
+                return redirect('/register')
+                    ->withErrors($valid)
+                    ->withInput();
+            }else{
+
+            }
+
+        $data = $request->all();
+        $user = new User($data);
+        $user->password = Hash::make($request->password);
+        $user->status = 1;
+        $user->userType = "Customer";
+        $code1 = str_random(10);
+        if($request->hasFile('image')){
+            $request->file('image');
+
+            $request->image->storeAs('public', $code1.".jpeg");
+
+            $user->pictureUrl = $code1;
+        }
+        if($user->save()){
+            Session::flash('message', 'Registration success.');
+            Session::flash('alert-class', 'alert-success');
+            return Redirect::to('/admin/user');
+        }else{
+
+             Session::flash('message', 'Registration failed.');
+            Session::flash('alert-class', 'alert-success');
+                    return Redirect::to('/admin/user');
 
         }
     }
@@ -109,11 +158,23 @@ class UserController extends Controller
         return redirect()->route('product.index');
     }
 
-
-    public function logout(){
-
-        Session::flush();
-
-        return redirect('/index');
+    public function getCustomers(){
+        $customers = DB::table('users')
+            ->join('cities', 'users.cityID', '=', 'cities.id')
+            ->select('users.*', 'cities.city as city')
+            ->where('userType', "Customer")
+            ->get();
+        return view('customers')->with('customers', $customers);
     }
+
+       public function getUsers(){
+       $users = DB::table('users')
+            ->join('cities', 'users.cityID', '=', 'cities.id')
+            ->select('users.*', 'cities.city as city')
+            ->get();
+        return view('user')->with('users', $users);
+    }
+
+
+  
 }

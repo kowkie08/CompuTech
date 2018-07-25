@@ -22,7 +22,7 @@
      <div id="page-content-wrapper">
         <div class="container" id="main">
             <br/>
-            <h1 class="header-title animated fadeIn">Products</h1><br/>
+            <h1 class="header-title animated fadeIn">Order Details</h1><br/>
                 <hr/>
 
 

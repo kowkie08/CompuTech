@@ -21,7 +21,7 @@ class ProductController extends Controller
         $products = DB::table('products')
             ->join('suppliers', 'products.supplierID', '=', 'suppliers.id')
             ->select('products.*', 'suppliers.name AS supplier')
-            ->where('quantity', '<', 0)
+            ->where('quantity', '>', 0)
             ->get();
 
         return view("product")->with('products', $products);
@@ -33,10 +33,11 @@ class ProductController extends Controller
         $products = DB::table('products')
             ->join('suppliers', 'products.supplierID', '=', 'suppliers.id')
             ->select('products.*', 'suppliers.name AS supplier')
-            ->where('quantity', '<', 0)
+            ->where('quantity', '>', 0)
             ->get();
+ 
 
-        return view("user_product", ['products' => $products]);
+         return view("user_product", ['products' => $products]);
     }
 
     public function getProductById($id)
