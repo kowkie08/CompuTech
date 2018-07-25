@@ -18,6 +18,19 @@ Route::get('/', function () {
 Route::get('/register', function () {
     return view('register');
 });
+Route::get('/product',[
+    'uses' => 'ProductController@getUserProducts',
+    'as' => 'product.index'
+]);
+Route::get('/checkout',[
+    'uses' => 'ProductController@getCheckout',
+    'as' => 'checkout'
+]);
+Route::post('/checkout',[
+    'uses' => 'ProductController@postCheckout',
+    'as' => 'checkout'
+]);
+
 Route::post('/signup', 'UserController@register');
 Route::get('/login', function () {
     return view('login');
@@ -39,3 +52,15 @@ Route::post('/product/insert', 'ProductController@add');
 Route::get('/product', 'ProductController@getProducts');
 
 Route::get('/logout', 'UserController@logout');
+
+Route::get('admin/product', 'ProductController@getProducts');
+
+//user
+Route::get('/add-to-cart/{id}',[
+    'uses' => 'ProductController@getAddToCart',
+    'as' => 'product.addToCart'
+]);
+Route::get('/cart',[
+    'uses' => 'ProductController@getCart',
+    'as' => 'product.Cart'
+]);

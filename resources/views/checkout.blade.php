@@ -1,0 +1,100 @@
+<!doctype html>
+
+<html lang="{{ app()->getLocale() }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
+
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean">
+        <div class="container"><a class="navbar-brand" href="#">Company Name</a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
+                        class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse"
+                 id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link text-white active"
+                                                                href="{{route('product.Cart')}}">CART&nbsp;
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                            <span class="badge badge-pill badge-info">{{Session::has('cart')?Session::get('cart')->totalQty:''}}</span>
+                        </a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-white active" href="#">&nbsp;ABOUT
+                            US</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-white" href="#">PRODUCTS</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-white" href="#">WHAT'S HOT</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-white" href="#">CONTACT US</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-white" href="#">LOGIN</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</head>
+
+<body>
+
+<div class="row">
+    <div class="col-sm-6 col-md-6 offset-3 offset-3">
+        <h1>Checkout</h1>
+        <h4>Your Total: Php {{ $total }}</h4>
+        <form action="{{route('checkout')}}" method="post" id="checkout-form">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" class="form-control" required>
+                    </div>
+                </div>
+                <hr>
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="card-name">Card Holder Name</label>
+                        <input type="text" id="card-name" class="form-control" required>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="card-number">Credit Card Number</label>
+                        <input type="text" id="card-number" class="form-control" required>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <label for="card-expiry-month">Expiration Month</label>
+                                <input type="text" id="card-expiry-month" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <label for="card-expiry-year">Expiration Year</label>
+                                <input type="text" id="card-expiry-year" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="card-cvc">CVC</label>
+                        <input type="text" id="card-cvc" class="form-control" required>
+                    </div>
+                </div>
+            </div>
+            {{ csrf_field() }}
+            <button type="submit" class="btn btn-success">Buy now</button>
+        </form>
+    </div>
+</div>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
