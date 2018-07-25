@@ -22,7 +22,7 @@
      <div id="page-content-wrapper">
         <div class="container" id="main">
             <br/>
-            <h1 class="header-title animated fadeIn">Order Details</h1><br/>
+            <h1 class="header-title animated fadeIn">Users</h1><br/>
                 <hr/>
 
 
@@ -44,24 +44,28 @@
                 <thead>
 
                 <tr>
-                    <th>Product Name</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
+                    <th> Name</th>
+                    <th>Address</th>
+                    <th>Mobile Number</th>
+                    <th>Email</th>
                
                 </tr>
                 </thead>
                 <tbody>
 
                    
-                    @foreach($orderDetails as $values)
+                    @foreach($users as $values)
                     <tr>
             
-                        <td>{{$values->name}}</td>
-                        <td>{{$values->quantity}}</td>
-                        <td>{{$values->price}}</td>
-  
+                        <td>{{$values->last_name}}, {{$values->first_name}}</td>
+                        <td>{{$values->street}}, {{$values->town}}, {{$values->city}}</td>
+                        <td>{{$values->mobileNumber}}</td>
+         <td>{{$values->email}}</td>
                 
-              
+                    <td>
+                        <a href="/user/{{$values->id}}" class="btn btn-primary">Edit</a> 
+                  
+                       </td>
                    </tr>
                    @endforeach
 

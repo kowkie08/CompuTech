@@ -10,12 +10,15 @@ use App\Order;
 use Session;
 class OrderController extends Controller
 {
-
-      $orders = DB::table('orders')
+	public function getOrders(){
+		   $orders = DB::table('orders')
             ->join('users', 'orders.customerID', '=', 'users.id')
             ->join('cities', 'orders.cityID', '=', 'cities.id')
-            ->select('orders.*', 'user.name AS name', 'cities.name as city')
+            ->select('orders.*', 'users.first_name AS name', 'cities.city as city')
             ->get();
 
         return view("orders")->with('orders', $orders);
+	}
+
+   
 }

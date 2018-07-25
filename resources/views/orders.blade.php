@@ -10,7 +10,7 @@
      <div id="page-content-wrapper">
         <div class="container" id="main">
             <br/>
-            <h1 class="header-title animated fadeIn">Products</h1><br/>
+            <h1 class="header-title animated fadeIn">Orders</h1><br/>
                 <hr/>
 
 
@@ -41,7 +41,7 @@
                 <tbody>
 
                    
-                    @foreach($orderDetails as $values)
+                    @foreach($orders as $values)
                     <tr>
             
                         <td>{{$values->name}}</td>
