@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class OrderDetail extends Model
 {
      protected $fillable = [
-        'id', 'customerID', 'name', 'category', 'brand_name', 'description', 'isHot', 'quantity', 'image', 'price',
+        'id','orderID', 'productID', 'name', 'category', 'brand_name', 'description', 'isHot', 'quantity', 'image', 'price',
     ];
 
     protected $hidden = [

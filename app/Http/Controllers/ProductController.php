@@ -6,6 +6,8 @@ use App\Cart;
 use Session;
 use Illuminate\Http\Request;
 use App\Product;
+use App\Order;
+use App\OrderDetail;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
 use Validator;
@@ -110,6 +112,7 @@ class ProductController extends Controller
         return redirect()->route('product.index');
     }
 
+
     public function getCart()
     {
         if (!Session::has('cart')) {
@@ -133,11 +136,43 @@ class ProductController extends Controller
 
     public function postCheckout(Request $request)
     {
+        //         $id = Session::get('id');
         if (!Session::has('cart')) {
-            return redirect()->route('shop.shoppingCart');
+            return redirect()->route('product.Cart');
         }
         $oldCart = Session::get('cart');
+
+
+        $data = $request->all();
         $cart = new Cart($oldCart);
-        $order = new Order();
+        $order = new Order($data);
+        $total = $cart->totalPrice;
+        $order->customerID = 1;
+        $order->cityID = $request->cityID;
+        $order->total = $total;
+        $order->status = 1;
+        if($order->save()){
+            $orderID = $order->id;
+            foreach($cart->items as $value){
+
+                $orderDetail = new OrderDetail();
+                $orderDetail->orderID = $orderID;
+                $orderDetail->productID = $value['id'];
+                $orderDetail->quantity = $value['qty'];
+                $orderDetail->price = $value['price'];
+                $orderDetail->status = 1;
+
+                if($orderDetail->save()){
+
+                }else{
+
+                }
+            }
+            Session::forget('cart');
+            return \redirect()->route('product.index');
+        }else{
+            //
+        }
+
     }
 }

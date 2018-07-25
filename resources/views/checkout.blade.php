@@ -1,3 +1,8 @@
+<?php
+$cities = \App\Http\Controllers\CityController::getCities();
+$cities = json_decode($cities, true);
+(array)$city = $cities;
+?>
 <!doctype html>
 
 <html lang="{{ app()->getLocale() }}">
@@ -40,53 +45,32 @@
         <h4>Your Total: Php {{ $total }}</h4>
         <form action="{{route('checkout')}}" method="post" id="checkout-form">
             <div class="row">
+
                 <div class="col-xs-12">
                     <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" class="form-control" required>
-                    </div>
-                </div>
-                <div class="col-xs-12">
-                    <div class="form-group">
-                        <label for="address">Address</label>
-                        <input type="text" id="address" class="form-control" required>
+                        <label for="street">Street: </label>
+                        <input type="text" id="street" name="street"class="form-control" required>
                     </div>
                 </div>
                 <hr>
                 <div class="col-xs-12">
                     <div class="form-group">
-                        <label for="card-name">Card Holder Name</label>
-                        <input type="text" id="card-name" class="form-control" required>
+                        <label for="town">Town: </label>
+                        <input type="text" name="town" d="town" class="form-control" required>
                     </div>
                 </div>
-                <div class="col-xs-12">
-                    <div class="form-group">
-                        <label for="card-number">Credit Card Number</label>
-                        <input type="text" id="card-number" class="form-control" required>
-                    </div>
+                <div class="col-lg-12">
+                    <label for="cityID">City</label>
+                    <select name="cityID" class="form-control" id="cityID">
+
+
+                        @foreach($city['city'] as $values)
+                            <option value="{{$values['id']}}">{{$values['city']}}</option>
+                        @endforeach
+                    </select>
                 </div>
-                <div class="col-xs-12">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <div class="form-group">
-                                <label for="card-expiry-month">Expiration Month</label>
-                                <input type="text" id="card-expiry-month" class="form-control" required>
-                            </div>
-                        </div>
-                        <div class="col-xs-6">
-                            <div class="form-group">
-                                <label for="card-expiry-year">Expiration Year</label>
-                                <input type="text" id="card-expiry-year" class="form-control" required>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12">
-                    <div class="form-group">
-                        <label for="card-cvc">CVC</label>
-                        <input type="text" id="card-cvc" class="form-control" required>
-                    </div>
-                </div>
+
+
             </div>
             {{ csrf_field() }}
             <button type="submit" class="btn btn-success">Buy now</button>

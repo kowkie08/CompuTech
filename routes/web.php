@@ -35,6 +35,10 @@ Route::post('/signup', 'UserController@register');
 Route::get('/login', function () {
     return view('login');
 });
+Route::get('/logout',[
+    'uses' => 'UserController@logout',
+    'as' => 'logout'
+]);
 Route::post('/signin', 'UserController@login');
 
 //supplier
