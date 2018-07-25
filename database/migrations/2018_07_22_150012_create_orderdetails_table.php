@@ -15,6 +15,7 @@ class CreateOrderdetailsTable extends Migration
     {
         Schema::create('orderdetails', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('orderID')->unassigned();
             $table->integer('productID')->unassigned();
             $table->integer('quantity')->unassigned();
             $table->float('price', 12, 2)->unassigned();

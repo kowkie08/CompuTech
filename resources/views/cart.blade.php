@@ -37,43 +37,43 @@
 @if(Session::has('cart'))
     <div class="row">
         <div class="col-sm-6 col-md-6 offset-3 offset-3">
-                <div class="photo-gallery"></div>
-                <div class="card-group">
-                    @foreach($products as $values)
-                        <div class="card"><img class="card-img-top w-100 d-block">
-                            <div class="card-body">
-                                <h4 class="card-title"><strong>{{$values['item']['name']}}&nbsp;<span
-                                                class="badge badge-pill badge-info">{{ $values['qty'] }}</span></strong>
-                                </h4>
-                                <p class="card-text">Php <span class="label label-success">{{$values['price']}}</span>
-                                </p>
-                                <strong>Total: {{$totalPrice}}</strong>
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-primary btn-xs dropdown-toggle"
-                                            data-toggle="dropdown">
-                                        Action <span class="caret"></span></button>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Reduce by 1</a></li>
-                                        <li><a href="#">Reduce All</a></li>
-                                    </ul>
-                                </div>
+                <table class="table table-hover">
+                    @foreach($products as $product)
+                    <tr>
+
+                        <td><strong>{{ $product['item']['name'] }}</strong></td>
+                        <td><span class="label label-success">{{ $product['price'] }}</span></td>
+                        <td><span class="badge badge-pill badge-info">{{ $product['qty'] }}</span></td>
+                        <td><div class="btn-group">
+                                <button type="button" class="btn btn-primary btn-xs dropdown-toogle" data-toggle="dropdown">Action <span class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Reduce by 1</a></li>
+                                    <li><a href="#">Reduce All</a></li>
+                                </ul>
                             </div>
+                        </td>
 
-                        </div>
+                    </tr>
                     @endforeach
-
-                </div>
-                <button type="button" class="btn btn-success float-right">CheckOut</button>
+                </table>
 
         </div>
-        <div class="clearfix"></div>
-
     </div>
-
+    <div class="row">
+        <div class="col-sm-6 col-md-6 offset-3 offset-3">
+            <strong>Total: {{ $totalPrice }}</strong>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 offset-3 offset-3">
+            <a href="{{ route('checkout') }}" type="button" class="btn btn-success">Checkout</a>
+        </div>
+    </div>
 @else
     <div class="row">
         <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-            <h2>No Items In Cart</h2>
+            <h2>No Items in Cart!</h2>
         </div>
     </div>
 @endif
