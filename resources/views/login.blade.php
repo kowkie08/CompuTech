@@ -22,6 +22,10 @@
                     <div class="collapse navbar-collapse"
                          id="navcol-1">
                         <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item" role="presentation"><a class="nav-link text-white active" href="{{route('product.Cart')}}">CART&nbsp;
+                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                    <span class="badge badge-pill badge-info">{{Session::has('cart')?Session::get('cart')->totalQty:''}}</span>
+                                </a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link text-white active" href="#">&nbsp;ABOUT US</a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link text-white" href="#">PRODUCTS</a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link text-white" href="#">WHAT'S HOT</a></li>
