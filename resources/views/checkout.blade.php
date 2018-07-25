@@ -60,8 +60,8 @@ $cities = json_decode($cities, true);
                     </div>
                 </div>
                 <div class="col-lg-12">
-                    <label for="CityID">City</label>
-                    <select name="CityID" class="form-control" id="CityID">
+                    <label for="cityID">City</label>
+                    <select name="cityID" class="form-control" id="cityID">
 
 
                         @foreach($city['city'] as $values)

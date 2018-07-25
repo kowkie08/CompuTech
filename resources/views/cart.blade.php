@@ -60,19 +60,19 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-6 col-md-6 offset-3 offset-3">
+        <div class="col-sm-6 col-md-6 offset-3">
             <strong>Total: {{ $totalPrice }}</strong>
         </div>
     </div>
     <hr>
     <div class="row">
-        <div class="col-sm-6 col-md-6 offset-3 offset-3">
+        <div class="col-sm-6 col-md-6 offset-3">
             <a href="{{ route('checkout') }}" type="button" class="btn btn-success">Checkout</a>
         </div>
     </div>
 @else
     <div class="row">
-        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+        <div class="col-sm-6 col-md-6  offset-3 text-md-center">
             <h2>No Items in Cart!</h2>
         </div>
     </div>

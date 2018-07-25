@@ -58,16 +58,18 @@
 
 
 
-                    <div class="photo-gallery"></div>
+
                     <div class="card-group">
                         @foreach($products as $values)
-                        <div class="card"><img class="card-img-top w-100 d-block">
+                            <div class="col-sm-12 col-md-4">
+                        <div class="card"><img class="card-img-top w-100 d-block" src="{{ asset('storage/'.$values->image.'.jpg') }}">
                             <div class="card-body">
                                 <h4 class="card-title">{{$values->name}}</h4>
                                 <p class="card-text">{{$values->category}}</p>
                                 <p class="card-text">Php {{$values->price}}</p>
                                 <a href="{{route('product.addToCart', ['id' => $values->id])}}" class="btn btn-primary" role="button">Add To Cart</a></div>
                         </div>
+                            </div>
                         @endforeach
                     </div>
 

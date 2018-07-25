@@ -135,32 +135,40 @@ class ProductController extends Controller
     {
         //         $id = Session::get('id');
         if (!Session::has('cart')) {
-            return redirect()->route('shop.shoppingCart');
+            return redirect()->route('product.Cart');
         }
         $oldCart = Session::get('cart');
 
 
         $data = $request->all();
-
         $cart = new Cart($oldCart);
         $order = new Order($data);
+        $total = $cart->totalPrice;
         $order->customerID = 1;
-
+        $order->cityID = $request->cityID;
+        $order->total = $total;
+        $order->status = 1;
         if($order->save()){
             $orderID = $order->id;
-            foreach($cart as $value){
-                $orderDetail = new OrderDetail($value);
+            foreach($cart->items as $value){
+
+                $orderDetail = new OrderDetail();
                 $orderDetail->orderID = $orderID;
+                $orderDetail->productID = $value['id'];
+                $orderDetail->quantity = $value['qty'];
+                $orderDetail->price = $value['price'];
+                $orderDetail->status = 1;
+
                 if($orderDetail->save()){
 
                 }else{
 
                 }
             }
-
-            return Redirect::to('/home');
+            Session::forget('cart');
+            return \redirect()->route('product.index');
         }else{
-
+            //
         }
 
     }
