@@ -59,6 +59,9 @@ $cities = json_decode($cities, true);
                         </ul>
                     </div>
                 @endif
+                  @if(Session::has('message'))
+                                            <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+                                    @endif
                 <div class="form-container">
                     <form action="/signup" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}

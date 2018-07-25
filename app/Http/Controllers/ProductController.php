@@ -14,10 +14,12 @@ class ProductController extends Controller
 {
     public function getProducts()
     {
+       
 //    	$products = Product::all()->where('Status' , 1);
         $products = DB::table('products')
             ->join('suppliers', 'products.supplierID', '=', 'suppliers.id')
             ->select('products.*', 'suppliers.name AS supplier')
+            ->where('quantity', '<', 0)
             ->get();
 
         return view("product")->with('products', $products);
@@ -29,6 +31,7 @@ class ProductController extends Controller
         $products = DB::table('products')
             ->join('suppliers', 'products.supplierID', '=', 'suppliers.id')
             ->select('products.*', 'suppliers.name AS supplier')
+            ->where('quantity', '<', 0)
             ->get();
 
         return view("user_product", ['products' => $products]);
