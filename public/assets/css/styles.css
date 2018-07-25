@@ -11,4 +11,13 @@
 p.bold {
   font-weight:bolder;
 }
+#sidebar-wrapper {
+  background-color:#ff0000;
+  color:#ffffff;
+}
+
+a {
+  color:#ffffff;
+}
+
 

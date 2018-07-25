@@ -1,22 +1,10 @@
-<!doctype html>
+@extends('user_master')
 
-<html lang="{{ app()->getLocale() }}">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
+@section('title')
+    Product
+@endsection
 
-</head>
-
-<style>
-.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-  background-color: gray !important;
-  color: #fff !important;
-}
-</style>
-<body>
+@section('content')
     <div id="wrapper">
      @include('navbar-admin')
      <div id="page-content-wrapper">
@@ -72,5 +60,4 @@
             </table>
  
     </div>
-</body>
-</html>
+@endsection
