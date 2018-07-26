@@ -6,7 +6,8 @@
 
 @section('content')
         <div class="login-clean">
-            <form method="post" enctype="multipart/form-data" action="/login">
+            <form method="post" enctype="multipart/form-data" action="/signin">
+                 {{ csrf_field() }}
                     @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>

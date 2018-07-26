@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
 use App\User;
 use Session;
+use Validator;
 
 class UserController extends Controller
 {
@@ -17,7 +18,6 @@ class UserController extends Controller
      $valid = Validator::make($request->all(), [
                 'email' => 'bail|required|max:191|unique:users',
                 'first_name' => 'bail|required|max:50',
-                'middle_name' => 'bail|required|max:50',
                 'last_name' => 'bail|required|max:50',
                 'street' => 'bail|required|max:50',
                 'town' => 'bail|required|max:50',
@@ -116,29 +116,30 @@ class UserController extends Controller
             if (Hash::check($request->password, $user->password)) {
                 // The passwords match...
 
+                }else{
+                 Session::flash('message', 'Invalid username/password');
+                Session::flash('alert-class', 'alert-success');
+                    return Redirect::to('/login');
+
+             
+            
+            }
+
+
                 if(isset($user->id)){
                 Session::put("id", $user->id);
                 Session::put("Email", $user->Email);
                 Session::put("userType", $user->userType);
 
                 if($user->userType = "Customer"){
-                    return Redirect::to('/products');
+                    return Redirect::to('/product');
                 }else if($user->userType = "Administrator"){
                        return Redirect::to('/dashboard');
                 }else{
                      Session::flash('message', 'Invalid username/password');
                 Session::flash('alert-class', 'alert-success');
                     return Redirect::to('/login');
-                }
-
-             
-            }else{
-                 Session::flash('message', 'Invalid username/password');
-                Session::flash('alert-class', 'alert-success');
-                    return Redirect::to('/login');
-            }
-
-            }
+            }}
             else{
                  Session::flash('message', 'Incorrect username/password.');
                 Session::flash('alert-class', 'alert-success');

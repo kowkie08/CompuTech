@@ -40,6 +40,20 @@ class ProductController extends Controller
          return view("user_product", ['products' => $products]);
     }
 
+     public function getHotProducts()
+    {
+//      $products = Product::all()->where('Status' , 1);
+        $products = DB::table('products')
+            ->join('suppliers', 'products.supplierID', '=', 'suppliers.id')
+            ->select('products.*', 'suppliers.name AS supplier')
+            ->where('quantity', '>', 0)
+            ->where('isHot', 1)
+            ->get();
+ 
+
+         return view("user_product", ['products' => $products]);
+    }
+
     public function getProductById($id)
     {
         $products = Product::all()->where('id', $id);

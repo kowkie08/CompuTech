@@ -22,6 +22,11 @@ Route::get('/product',[
     'uses' => 'ProductController@getUserProducts',
     'as' => 'product.index'
 ]);
+
+Route::get('/product/hot',[
+    'uses' => 'ProductController@getHotProducts',
+    'as' => 'product.hot'
+]);
 Route::get('/checkout',[
     'uses' => 'ProductController@getCheckout',
     'as' => 'checkout'

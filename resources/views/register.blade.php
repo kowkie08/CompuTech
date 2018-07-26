@@ -3,6 +3,13 @@
 @section('title')
     Register
 @endsection
+<?php 
+
+$cities = \App\Http\Controllers\CityController::getCities();
+ $cities = json_decode($cities, true);
+(array)$city = $cities;
+
+?>
 
 @section('content')
 <div id="wrapper">
@@ -51,8 +58,8 @@
 
                                 <div class="col-lg-12">
                                     <label for="middle_name">Middle Name: </label>
-                                    <input type="text" name="middle_name" id="middle_name" class="form-control required"
-                                           required="required" placeholder="Middle Name">
+                                    <input type="text" name="middle_name" id="middle_name" class="form-control"
+                           placeholder="Middle Name">
 
                                 </div>
 
