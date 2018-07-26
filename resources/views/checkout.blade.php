@@ -4,6 +4,11 @@
     Checkout
 @endsection
 
+<?php
+$cities = \App\Http\Controllers\CityController::getCities();
+$cities = json_decode($cities, true);
+(array)$city = $cities;
+?>
 @section('content')
 <div class="row">
     <div class="col-sm-6 col-md-6 offset-3 offset-3">

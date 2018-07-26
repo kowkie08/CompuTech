@@ -58,14 +58,14 @@ class ProductController extends Controller
     {
         $products = Product::all()->where('id', $id);
 
-        return json_encode($products);
+        return view("editProduct")->with('products', $products);
     }
 
     public function edit(Request $request)
     {
 
-        $product = Product::all()->where('id', $request->id);
-        $product->supplierID = $request->supplierID;
+        $product = Product::all()->where('id', $request->id)->first();
+
         $product->name = $request->name;
         $product->category = $request->category;
         $product->brand_name = $request->brand_name;
@@ -77,20 +77,21 @@ class ProductController extends Controller
 
         if ($product->save()) {
 
+            return Redirect::to('/admin/product');
         } else {
-
+            return Redirect::to('/admin/product');
         }
 
     }
 
     public function archive(Request $request)
     {
-        $product = Product::all()->where('id', $id);
+        $product = Product::all()->where('id', $request->id);
         $product->Status = "0";
         if ($product->save()) {
-
+            return Redirect::to('/admin/product');
         } else {
-
+            return Redirect::to('/admin/product');
         }
     }
 

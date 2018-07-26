@@ -3,6 +3,7 @@
 @section('title')
     Register
 @endsection
+
 <?php 
 
 $cities = \App\Http\Controllers\CityController::getCities();
@@ -10,6 +11,7 @@ $cities = \App\Http\Controllers\CityController::getCities();
 (array)$city = $cities;
 
 ?>
+
 
 @section('content')
 <div id="wrapper">
@@ -39,8 +41,8 @@ $cities = \App\Http\Controllers\CityController::getCities();
                                 <h1 class="header-title animated fadeIn">Register</h1><br/>
                                 <hr/>
                                 <div class="col-lg-12">
-                                    <label for="CityID">City</label>
-                                    <select name="CityID" class="form-control" id="CityID">
+                                    <label for="cityID">City</label>
+                                    <select name="cityID" class="form-control" id="cityIDs">
 
 
                                         @foreach($city['city'] as $values)

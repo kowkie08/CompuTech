@@ -3,13 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>@yield('title')</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
-    <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
-    <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
-    <link rel="stylesheet" href="assets/css/Registration-Form-with-Photo.css">
-    <link rel="stylesheet" href="assets/css/Sidebar-Menu.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="{{ asset('/assets/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/Sidebar-Menu.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/styles.css')}}">
 
     @yield('styles')
 </head>
@@ -18,9 +14,11 @@
     <ul class="sidebar-nav">
         <a class="btn btn-link" role="button" href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars"></i></a>
         <li class="sidebar-brand"> <a class="text-white" href="#">Home </a></li>
-        <li> <a class="text-white" href="#">Dashboard </a></li>
-        <li> <a class="text-white" href="#">Dashboard </a></li>
-        <li> <a class="text-white" href="#">Dashboard </a></li>
+        <li> <a class="text-white" href="/admin/customers">Customers </a></li>
+        <li> <a class="text-white" href="/admin/product">Products </a></li>
+        <li> <a class="text-white" href="/admin/users">User </a></li>
+        <li> <a class="text-white" href="/supplier">Supplier </a></li>
+        <li> <a class="text-white" href="/admin/orders">Orders </a></li>
     </ul>
 </div>
 <div class="container">
