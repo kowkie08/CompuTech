@@ -25,7 +25,13 @@
                 <li class="nav-item" role="presentation"><a class="nav-link text-white active" href="#">&nbsp;ABOUT US</a></li>
                 <li class="nav-item" role="presentation"><a class="nav-link text-white" href="{{route('product.index')}}">PRODUCTS</a></li>
                 <li class="nav-item" role="presentation"><a class="nav-link text-white" href="#">WHAT'S HOT</a></li>
+
+                @if(Session::has('id'))
+                    <li class="nav-item" role="presentation"><a class="nav-link text-white" href="/logout">LOGOUT</a></li>
+                    @else
                 <li class="nav-item" role="presentation"><a class="nav-link text-white" href="/login">LOGIN</a></li>
+
+                    @endif
             </ul>
         </div>
     </div>

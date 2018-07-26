@@ -72,7 +72,7 @@ class UserController extends Controller
             ]);
 
        if($valid->fails()){
-                return redirect('/register')
+                return redirect('/admin/user/add')
                     ->withErrors($valid)
                     ->withInput();
             }else{
@@ -95,12 +95,12 @@ class UserController extends Controller
         if($user->save()){
             Session::flash('message', 'Registration success.');
             Session::flash('alert-class', 'alert-success');
-            return Redirect::to('/admin/user');
+            return Redirect::to('/admin/users');
         }else{
 
              Session::flash('message', 'Registration failed.');
             Session::flash('alert-class', 'alert-success');
-                    return Redirect::to('/admin/user');
+                    return Redirect::to('/admin/user/add');
 
         }
     }
@@ -130,10 +130,10 @@ class UserController extends Controller
                 Session::put("Email", $user->Email);
                 Session::put("userType", $user->userType);
 
-                if($user->userType = "Customer"){
+                if($user->userType == "Customer"){
                     return Redirect::to('/product');
-                }else if($user->userType = "Administrator"){
-                       return Redirect::to('/dashboard');
+                }else if($user->userType == "Administrator"){
+                       return Redirect::to('/admin/users');
                 }else{
                      Session::flash('message', 'Invalid username/password');
                 Session::flash('alert-class', 'alert-success');
@@ -155,7 +155,7 @@ class UserController extends Controller
     public function logout(){
         Session::flush();
 
-        return redirect()->route('product.index');
+        return Redirect::to('/login');
     }
 
     public function getCustomers(){

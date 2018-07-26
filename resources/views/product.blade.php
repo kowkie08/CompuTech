@@ -25,7 +25,7 @@
                     @endif
 
 
-                    <a href="/admin/product/insert" class="btn btn-primary">Add Product</a>
+                    <a href="/product/add" class="btn btn-primary">Add Product</a>
                     <table class="table table-striped">
                         <thead>
 

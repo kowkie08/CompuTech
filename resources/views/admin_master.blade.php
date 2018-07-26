@@ -19,6 +19,7 @@
         <li> <a class="text-white" href="/admin/users">User </a></li>
         <li> <a class="text-white" href="/supplier">Supplier </a></li>
         <li> <a class="text-white" href="/admin/orders">Orders </a></li>
+        <li> <a class="text-white" href="/logout">Logout </a></li>
     </ul>
 </div>
 <div class="container">
