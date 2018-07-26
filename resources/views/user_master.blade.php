@@ -22,9 +22,9 @@
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                         <span class="badge badge-pill badge-info">{{Session::has('cart')?Session::get('cart')->totalQty:''}}</span>
                     </a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link text-white active" href="#">&nbsp;ABOUT US</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link text-white active" href="/">&nbsp;ABOUT US</a></li>
                 <li class="nav-item" role="presentation"><a class="nav-link text-white" href="{{route('product.index')}}">PRODUCTS</a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link text-white" href="#">WHAT'S HOT</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link text-white" href="{{route('product.hot')}}">WHAT'S HOT</a></li>
                 <li class="nav-item" role="presentation"><a class="nav-link text-white" href="/login">LOGIN</a></li>
             </ul>
         </div>

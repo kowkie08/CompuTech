@@ -51,7 +51,7 @@ class ProductController extends Controller
             ->get();
  
 
-         return view("user_product", ['products' => $products]);
+         return view("user_hotprod", ['products' => $products]);
     }
 
     public function getProductById($id)

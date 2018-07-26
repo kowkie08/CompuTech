@@ -1,7 +1,7 @@
 @extends('user_master')
 
 @section('title')
-    Register
+    Edit Product
 @endsection
 <?php
 $cities = \App\Http\Controllers\CityController::getCities();
