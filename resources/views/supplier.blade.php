@@ -27,7 +27,7 @@
 
 
                         <thead>
-                        <a href="/supplier/add" class="btn btn-primary">Add Supplier</a>
+                        <a href="{{URL::to('/sup/add')}}" class="btn btn-primary">Add Supplier</a>
                         <tr>
                             <th>Name</th>
                             <th>Email</th>

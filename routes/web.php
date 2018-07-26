@@ -47,8 +47,11 @@ Route::get('/logout',[
 Route::post('/signin', 'UserController@login');
 
 //supplier
+Route::get('/sup/add', function () {
+    return view('addsupplier');
+});
 Route::get('/supplier', 'SupplierController@getSuppliers');
-Route::post('/supplier/add', 'SupplierController@add');
+Route::post('/admin/supplier/add', 'SupplierController@add');
 Route::get('/supplier/archive/{id}', 'SupplierController@archive');
 Route::get('/supplier/{id}', 'SupplierController@getSupplierByID');
 Route::post('/supplier/edit', 'SupplierController@edit');
