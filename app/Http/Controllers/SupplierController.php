@@ -79,8 +79,25 @@ class SupplierController extends Controller
 
     	$supplier = Supplier::all()->where('id', $request->id);
 
-    	return $supplier;
+    	return view('editSupplier')->with('supplier', $supplier);
     }
+
+
+    public function edit(Request $request){
+
+        $supplier = Supplier::all()->where('id', $request->id)->first();
+        $supplier->name = $request->name;
+        $supplier->email = $request->email;
+        $supplier->mobileNumber = $request->mobileNumber;
+
+
+        if($supplier->save()){
+            return Redirect::to('/supplier');
+        }else{
+            return Redirect::to('/supplier');
+        }
+    }
+
 
     public function archive(Request $request){
 

@@ -1,4 +1,4 @@
-@extends('user_master')
+@extends('admin_master')
 
 @section('title')
     Product
@@ -6,7 +6,6 @@
 
 @section('content')
     <div id="wrapper">
-     @include('navbar-admin')
      <div id="page-content-wrapper">
         <div class="container" id="main">
             <br/>

@@ -84,7 +84,7 @@ class UserController extends Controller
         $user = new User($data);
         $user->password = Hash::make($request->password);
         $user->status = 1;
-        $user->userType = "Customer";
+        $user->userType = "Administrator";
         $code1 = str_random(10);
         if($request->hasFile('image')){
             $request->file('image');
@@ -167,6 +167,16 @@ class UserController extends Controller
         return view('customers')->with('customers', $customers);
     }
 
+    public function getCustomerByID(Request $request){
+        $users = DB::table('users')
+            ->join('cities', 'users.cityID', '=', 'cities.id')
+            ->select('users.*', 'cities.city as city')
+            ->where('users.id', $request->id)
+            ->where('userType', "Customer")
+            ->get();
+        return view('user')->with('users', $users);
+    }
+
        public function getUsers(){
        $users = DB::table('users')
             ->join('cities', 'users.cityID', '=', 'cities.id')
@@ -175,6 +185,50 @@ class UserController extends Controller
         return view('user')->with('users', $users);
     }
 
+    public function getUserByID(Request $request){
+        $users = DB::table('users')
+            ->join('cities', 'users.cityID', '=', 'cities.id')
+            ->select('users.*', 'cities.city as city')
+            ->where('users.id', $request->id)
+            ->get();
+        return view('user')->with('users', $users);
+    }
+    public function edit(Request $request){
 
+           $user = User::all()->where('id', $request->id)->first();
+           $user->first_name = $request->first_name;
+        $user->middle_name = $request->middle_name;
+        $user->last_name = $request->last_name;
+        $user->email = $request->email;
+        $user->street = $request->street;
+        $user->town = $request->town;
+        $user->mobileNumber = $request->mobileNumber;
+
+        if($user->save()){
+            return Redirect::to('/admin/users');
+        }else{
+            return Redirect::to('/admin/users');
+        }
+
+    }
+
+    public function editCustomer(Request $request){
+
+        $user = User::all()->where('id', $request->id)->first();
+        $user->first_name = $request->first_name;
+        $user->middle_name = $request->middle_name;
+        $user->last_name = $request->last_name;
+        $user->email = $request->email;
+        $user->street = $request->street;
+        $user->town = $request->town;
+        $user->mobileNumber = $request->mobileNumber;
+
+        if($user->save()){
+            return Redirect::to('/admin/customers');
+        }else{
+            return Redirect::to('/admin/customers');
+        }
+
+    }
   
 }

@@ -4,26 +4,13 @@ $suppliers = \App\Http\Controllers\SupplierController::getSuppliersAPI();
 $suppliers = json_decode($suppliers, true);
 (array)$supplier = $suppliers;
  ?>
-<!doctype html>
+@extends('admin_master')
 
-<html lang="{{ app()->getLocale() }}">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@section('title')
+    Product
+@endsection
 
-
-
-
-</head>
-
-<style>
-.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-  background-color: gray !important;
-  color: #fff !important;
-}
-</style>
-<body>
+@section('content')
     <div id="wrapper">
      @include('navbar-admin')
      <div id="page-content-wrapper">
@@ -68,7 +55,7 @@ $suppliers = json_decode($suppliers, true);
 
                   <div class="col-lg-12">
                     <label for="category">Category: </label>
-                    <select name="category" class="form-control" id="CityID">
+                    <select name="category" class="form-control" id="category">
                       
                           <option value="Laptop">Laptop</option>
                           <option value="Mobile Phone">Mobile Phone</option>
@@ -122,5 +109,4 @@ $suppliers = json_decode($suppliers, true);
           
  
     </div>
-</body>
-</html>
+@endsection

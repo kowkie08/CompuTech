@@ -44,16 +44,20 @@ Route::post('/signin', 'UserController@login');
 //supplier
 Route::get('/supplier', 'SupplierController@getSuppliers');
 Route::post('/supplier/add', 'SupplierController@add');
-Route::get('/supplier/archive/{id}', 'SupplierController@archive');\
+Route::get('/supplier/archive/{id}', 'SupplierController@archive');
+Route::get('/supplier/{id}', 'SupplierController@getSupplierByID');
+Route::post('/supplier/edit', 'SupplierController@edit');
 
 //product
 Route::get('/product/add', function () {
     return view('addproduct');
 });
 
-Route::post('/product/insert', 'ProductController@add');
+Route::post('/admin/product/insert', 'ProductController@add');
 
+Route::post('/product/edit', 'ProductController@edit');
 
+Route::get('/product/{id}', 'ProductController@getProductById');
 
 Route::get('/logout', 'UserController@logout');
 
@@ -70,9 +74,21 @@ Route::get('/cart',[
 ]);
 
 //order
-Route::get('/orders', 'OrderController@getOrders');
+Route::get('/admin/orders', 'OrderController@getOrders');
 Route::get('/order/{id}', 'OrderDetailController@getOrderDetails');
 
 
 //users
-Route::get('/users', 'UserController@getUsers');
+Route::get('/admin/users', 'UserController@getUsers');
+Route::get('/admin/users/{id}', 'UserController@getUserByID');
+Route::post('/admin/user/edit', 'UserController@edit');
+Route::get('/admin/user/add', function () {
+    return view('addadministrator');
+});
+
+Route::post('/admin/user/signup', 'UserController@addAdmin');
+
+
+Route::get('/admin/customers', 'UserController@getCustomers');
+Route::get('/admin/customer/{id}', 'UserController@getCustomerByID');
+Route::post('/admin/customer/edit', 'UserController@editCustomer');

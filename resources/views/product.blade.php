@@ -25,9 +25,9 @@
                  @endif
 
 
-            
 
-               <table class="table  table-hover">
+                    <a href="/admin/product/insert" class="btn btn-primary">Add Administrator</a>
+               <table class="table table-striped">
                 <thead>
 
                 <tr>
