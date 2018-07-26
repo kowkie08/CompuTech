@@ -12,7 +12,6 @@ $suppliers = json_decode($suppliers, true);
 
 @section('content')
     <div id="wrapper">
-     @include('navbar-admin')
      <div id="page-content-wrapper">
         <div class="container" id="main">
             <br/>

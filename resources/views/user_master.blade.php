@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>@yield('title')</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
-    <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
-    <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
-    <link rel="stylesheet" href="assets/css/Registration-Form-with-Photo.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="{{asset('assets/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/fonts/ionicons.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/Login-Form-Clean.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/Navigation-Clean.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/Pretty-Registration-Form.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/styles.css')}}">
 
     @yield('styles')
 </head>
@@ -25,7 +25,12 @@
                 <li class="nav-item" role="presentation"><a class="nav-link text-white active" href="/">&nbsp;ABOUT US</a></li>
                 <li class="nav-item" role="presentation"><a class="nav-link text-white" href="{{route('product.index')}}">PRODUCTS</a></li>
                 <li class="nav-item" role="presentation"><a class="nav-link text-white" href="{{route('product.hot')}}">WHAT'S HOT</a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link text-white" href="/login">LOGIN</a></li>
+                @if(Session::has('id'))
+                    <li class="nav-item" role="presentation"><a class="nav-link text-white" href="/logout">LOGOUT</a></li>
+                @else
+                    <li class="nav-item" role="presentation"><a class="nav-link text-white" href="/register">SIGN UP</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-white" href="/login">LOGIN</a></li>
+                @endif
             </ul>
         </div>
     </div>

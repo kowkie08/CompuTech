@@ -91,7 +91,7 @@ Route::get('/admin/user/add', function () {
     return view('addadministrator');
 });
 
-Route::post('/admin/user/signup', 'UserController@addAdmin');
+Route::post('/admin/signup', 'UserController@addAdmin');
 
 
 Route::get('/admin/customers', 'UserController@getCustomers');
