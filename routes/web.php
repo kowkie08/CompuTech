@@ -100,3 +100,7 @@ Route::post('/admin/signup', 'UserController@addAdmin');
 Route::get('/admin/customers', 'UserController@getCustomers');
 Route::get('/admin/customer/{id}', 'UserController@getCustomerByID');
 Route::post('/admin/customer/edit', 'UserController@editCustomer');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
